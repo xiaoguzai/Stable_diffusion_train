@@ -209,9 +209,35 @@ pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --e
 
 autodl官网也有一些推荐的方式可以参考，https://www.autodl.com/docs/scp/
 
-# 其他内容
-感谢diffusers、deepdanbooru等开源项目  
-风格训练代码来自nbardy的PR进行修改  
-打tags标签的部分代码来自crosstyan、Nyanko Lepsoni、AUTOMATC1111  
-如果感兴趣欢迎加QQ群探讨交流，455521885  
-封装整理by - 白菜 
+## 训练中的参数
+比如训练train_object.sh部分的代码
+/home/xiaoguzai/代码/现在正在学习的-dreambooth-for-diffusion-main/tools/train_dreambooth.py
+--train_text_encoder
+--pretrained_model_name_or_path="/home/xiaoguzai/.cache/modelscope/hub/langboat/Guohua-Diffusion"
+--mixed_precision="fp16"
+--instance_data_dir="./datasets/test2"
+--instance_prompt="a photo of <xxx> dog"
+--with_prior_preservation
+--prior_loss_weight=1.0
+--class_prompt="a photo of an angry dog"
+--class_data_dir="./datasets/class"
+--num_class_images=3
+--sample_batch_size=1
+--output_dir="./new_model"
+--logging_dir="/root/tf-logs"
+--center_crop
+--resolution=512
+--train_batch_size=1
+--gradient_accumulation_steps=1
+--gradient_checkpointing
+--use_8bit_adam
+--learning_rate=2e-6
+--lr_scheduler="constant"
+--lr_warmup_steps=0
+--auto_test_model
+--test_prompts_file="./test_prompts_object.txt"
+--test_seed=123
+--test_num_per_prompt=1
+--max_train_steps=10
+--save_model_every_n_steps=5
+
